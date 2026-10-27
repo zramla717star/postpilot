@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PostPilot — Plan and schedule picture and video posts</title>
+<style>body{font-family:system-ui,sans-serif;max-width:760px;margin:32px auto;padding:0 16px;line-height:1.5;color:#1c2430}a{color:#0b5cab}nav a{margin-right:14px}.card{border:1px solid #d5dce5;border-radius:10px;padding:14px;margin:12px 0}</style>
+</head>
+<body>
+<nav><a href="index.html">Home</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
+<h1>PostPilot</h1>
+<p><strong>Status: draft / sandbox / dry-run. TikTok approval is pending.</strong> Nothing on this site posts to TikTok yet.</p>
+<p>PostPilot helps creators plan and schedule picture posts and video posts with captions in one place — up to 5 video posts per day AND up to 5 picture posts per day, each at a separate time.</p>
+<h2>Two post types, separate daily quotas</h2>
+<ul>
+<li><strong>Picture / carousel post:</strong> up to 35 pictures, caption + hashtags — max 5 per day.</li>
+<li><strong>Video post:</strong> one video file, caption + hashtags — max 5 per day.</li>
+</ul>
+<p>That is 10 scheduled slots per day in total. You pick what to upload: every queued item is marked Prepared, Selected for upload, or Skipped, and you can change that choice before its scheduled time. Only Selected items are posted at their time; Prepared and Skipped items stay in the queue and are never auto-posted.</p>
+<p>The queue runs on the app's own timer, because TikTok's Content Posting API has no scheduled-publish time of its own: PostPilot stores the time you choose and triggers the post at that time.</p>
+<p><strong>Important:</strong> video is the Content Posting API's primary flow. The picture / carousel flow is to be tested first after TikTok approval, before relying on it for daily posting.</p>
+<h2>How it works (official route only)</h2>
+<ol>
+<li>You add pictures or a video, a caption, hashtags, and a time.</li>
+<li>The post waits in your queue.</li>
+<li>At the scheduled time, in dry-run mode, PostPilot logs “would post video at …” or “would post pictures at …” — nothing is sent to TikTok until approval and credentials are in place.</li>
+<li>After approval, you connect your TikTok account through TikTok's own OAuth login. Your TikTok password is never typed into, stored by, or sent through PostPilot.</li>
+</ol>
+<div class="card">
+<p><strong>About this site.</strong> This is the public website for PostPilot (the product, its Terms, and its Privacy Policy). The scheduling dashboard itself runs in the full PostPilot app, not on this static site, and is shown in the demo video submitted with the TikTok app review.</p>
+<p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></p>
+</div>
+<p><small>PostPilot is an independent scheduling tool. It is not affiliated with, endorsed by, or using the logo of any social-media company.</small></p>
+</body>
+</html>
