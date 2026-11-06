@@ -3,33 +3,66 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PostPilot — Plan and schedule picture and video posts</title>
-<style>body{font-family:system-ui,sans-serif;max-width:760px;margin:32px auto;padding:0 16px;line-height:1.5;color:#1c2430}a{color:#0b5cab}nav a{margin-right:14px}.card{border:1px solid #d5dce5;border-radius:10px;padding:14px;margin:12px 0}</style>
+<title>PostPilot Scheduler — Plan and schedule TikTok picture and video posts</title>
+<meta name="description" content="PostPilot Scheduler helps creators plan and schedule TikTok picture and video posts with captions, hashtags and times, in one place.">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<style>body{font-family:system-ui,sans-serif;max-width:820px;margin:0 auto;padding:0 16px 40px;line-height:1.55;color:#1c2430}header{display:flex;align-items:center;gap:12px;padding:20px 0 8px}header img{width:56px;height:56px;border-radius:12px}header h1{font-size:28px;margin:0}nav{border-top:1px solid #d5dce5;border-bottom:1px solid #d5dce5;padding:10px 0;margin:8px 0 20px}nav a{margin-right:14px;color:#0b5cab;text-decoration:none}nav a:hover{text-decoration:underline}a{color:#0b5cab}.card{border:1px solid #d5dce5;border-radius:10px;padding:16px;margin:14px 0}.btn{display:inline-block;background:#0b5cab;color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600}footer{border-top:1px solid #d5dce5;margin-top:32px;padding-top:16px;font-size:14px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #d5dce5;padding:8px;text-align:left;font-size:14px}th{background:#f2f5f8}</style>
 </head>
 <body>
-<nav><a href="index.html">Home</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
-<h1>PostPilot</h1>
-<p><strong>Status: draft / sandbox / dry-run. TikTok approval is pending.</strong> Nothing on this site posts to TikTok yet.</p>
-<p>PostPilot helps creators plan and schedule picture posts and video posts with captions in one place — up to 5 video posts per day AND up to 5 picture posts per day, each at a separate time.</p>
-<h2>Two post types, separate daily quotas</h2>
-<ul>
-<li><strong>Picture / carousel post:</strong> up to 35 pictures, caption + hashtags — max 5 per day.</li>
-<li><strong>Video post:</strong> one video file, caption + hashtags — max 5 per day.</li>
-</ul>
-<p>That is 10 scheduled slots per day in total. You pick what to upload: every queued item is marked Prepared, Selected for upload, or Skipped, and you can change that choice before its scheduled time. Only Selected items are posted at their time; Prepared and Skipped items stay in the queue and are never auto-posted.</p>
-<p>The queue runs on the app's own timer, because TikTok's Content Posting API has no scheduled-publish time of its own: PostPilot stores the time you choose and triggers the post at that time.</p>
-<p><strong>Important:</strong> video is the Content Posting API's primary flow. The picture / carousel flow is to be tested first after TikTok approval, before relying on it for daily posting.</p>
-<h2>How it works (official route only)</h2>
-<ol>
-<li>You add pictures or a video, a caption, hashtags, and a time.</li>
-<li>The post waits in your queue.</li>
-<li>At the scheduled time, in dry-run mode, PostPilot logs “would post video at …” or “would post pictures at …” — nothing is sent to TikTok until approval and credentials are in place.</li>
-<li>After approval, you connect your TikTok account through TikTok's own OAuth login. Your TikTok password is never typed into, stored by, or sent through PostPilot.</li>
-</ol>
+<header><img src="icon.png" alt="PostPilot Scheduler app icon"><div><h1>PostPilot Scheduler</h1><p style="margin:0;color:#556">Plan and schedule TikTok picture and video posts, in one place.</p></div></header>
+<nav><a href="index.html">Home</a><a href="features.html">Features</a><a href="how-it-works.html">How it works</a><a href="dashboard.html">Dashboard preview</a><a href="faq.html">FAQ</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
+
+<p><strong>Status: TikTok approval is pending.</strong> PostPilot Scheduler is in review for TikTok's Content Posting API. Nothing on this site posts to TikTok yet, and no login is needed to read this website.</p>
+
+<p>PostPilot Scheduler helps creators prepare picture posts and video posts ahead of time, with a caption, hashtags and a time for each post. You can queue up to <strong>5 video posts per day AND 5 picture posts per day</strong>, each at a separate time — 10 scheduled slots per day in total.</p>
+<p><a class="btn" href="how-it-works.html">See how it works</a> &nbsp; <a class="btn" href="dashboard.html" style="background:#1c7a4d">See the dashboard preview</a></p>
+
 <div class="card">
-<p><strong>About this site.</strong> This is the public website for PostPilot (the product, its Terms, and its Privacy Policy). The scheduling dashboard itself runs in the full PostPilot app, not on this static site, and is shown in the demo video submitted with the TikTok app review.</p>
-<p><a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></p>
+<h2>What you can schedule</h2>
+<table>
+<tr><th>Post type</th><th>Content</th><th>Daily limit</th></tr>
+<tr><td>Picture / carousel post</td><td>1 to 35 pictures, caption + hashtags</td><td>5 per day</td></tr>
+<tr><td>Video post</td><td>1 video file, caption + hashtags</td><td>5 per day</td></tr>
+</table>
+<p>Every queued item is marked <strong>Prepared</strong>, <strong>Selected for upload</strong>, or <strong>Skipped</strong>. You can change that choice before its scheduled time. Only Selected items are posted at their time. Prepared and Skipped items stay in the queue and are never auto-posted.</p>
 </div>
-<p><small>PostPilot is an independent scheduling tool. It is not affiliated with, endorsed by, or using the logo of any social-media company.</small></p>
+
+<div class="card">
+<h2>Why creators use it</h2>
+<ul>
+<li><strong>Plan ahead:</strong> prepare a day's posts in one sitting, instead of posting one by one.</li>
+<li><strong>Separate times:</strong> each post has its own time, so posts do not all go out at once.</li>
+<li><strong>You stay in control:</strong> only the posts you mark Selected are sent. Nothing is posted by surprise.</li>
+<li><strong>No password sharing:</strong> after approval, you connect your TikTok account through TikTok's own OAuth login. Your TikTok password is never typed into, stored by, or sent through PostPilot Scheduler.</li>
+<li><strong>Official route only:</strong> posting uses TikTok's Content Posting API, not screen-tapping or phone control.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>How it works, in short</h2>
+<ol>
+<li>Add pictures or a video, a caption, hashtags, and a time.</li>
+<li>The post waits in your queue as Prepared.</li>
+<li>Mark it Selected when you want it to go out, or Skipped if you change your mind.</li>
+<li>At the scheduled time, PostPilot Scheduler's own queue triggers the post, because TikTok's Content Posting API has no scheduled-publish time of its own.</li>
+</ol>
+<p><a href="how-it-works.html">Read the full step-by-step guide</a> · <a href="faq.html">Read the FAQ</a></p>
+</div>
+
+<div class="card">
+<h2>Important notes</h2>
+<ul>
+<li>Video is TikTok's Content Posting API's primary flow. The picture / carousel flow will be tested first after approval, before relying on it for daily posting.</li>
+<li>Scheduled times are best-effort. On the free hosting plan, scheduled checks run on a timed job (every 30 minutes), so a post may run a few minutes late.</li>
+<li>PostPilot Scheduler is an independent scheduling tool. It is not affiliated with, endorsed by, or using the logo of any social-media company.</li>
+</ul>
+</div>
+
+<footer>
+<p><strong>PostPilot Scheduler</strong> — a public scheduling tool for creators.</p>
+<p><a href="index.html">Home</a> · <a href="features.html">Features</a> · <a href="how-it-works.html">How it works</a> · <a href="dashboard.html">Dashboard preview</a> · <a href="faq.html">FAQ</a> · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></p>
+<p><small>PostPilot Scheduler is an independent scheduling tool. It is not affiliated with, endorsed by, or using the logo of any social-media company.</small></p>
+</footer>
 </body>
 </html>
