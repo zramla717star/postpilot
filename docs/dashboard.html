@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard preview — PostPilot Scheduler</title>
+<meta name="description" content="A sample preview of the PostPilot Scheduler dashboard queue: Prepared, Selected and Skipped posts with times, captions and hashtags.">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<style>body{font-family:system-ui,sans-serif;max-width:820px;margin:0 auto;padding:0 16px 40px;line-height:1.55;color:#1c2430}header{display:flex;align-items:center;gap:12px;padding:20px 0 8px}header img{width:56px;height:56px;border-radius:12px}header h1{font-size:28px;margin:0}nav{border-top:1px solid #d5dce5;border-bottom:1px solid #d5dce5;padding:10px 0;margin:8px 0 20px}nav a{margin-right:14px;color:#0b5cab;text-decoration:none}nav a:hover{text-decoration:underline}a{color:#0b5cab}.card{border:1px solid #d5dce5;border-radius:10px;padding:16px;margin:14px 0}footer{border-top:1px solid #d5dce5;margin-top:32px;padding-top:16px;font-size:14px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #d5dce5;padding:8px;text-align:left;font-size:14px}th{background:#f2f5f8}.selected{color:#1c7a4d;font-weight:700}.prepared{color:#8a6d00;font-weight:700}.skipped{color:#888;font-weight:700}code{background:#f2f5f8;padding:2px 5px;border-radius:4px}</style>
+</head>
+<body>
+<header><img src="icon.png" alt="PostPilot Scheduler app icon"><div><h1>PostPilot Scheduler</h1><p style="margin:0;color:#556">Dashboard preview</p></div></header>
+<nav><a href="index.html">Home</a><a href="features.html">Features</a><a href="how-it-works.html">How it works</a><a href="dashboard.html">Dashboard preview</a><a href="faq.html">FAQ</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
+
+<h2>Dashboard preview</h2>
+<p><strong>This is a sample preview, not a live dashboard and not a login page.</strong> It shows what a day's queue looks like in PostPilot Scheduler. No login is needed to view this page, and nothing here posts to TikTok.</p>
+
+<div class="card">
+<h3>Sample queue — one day</h3>
+<table>
+<tr><th>Time</th><th>Type</th><th>Caption</th><th>Hashtags</th><th>Status</th></tr>
+<tr><td>10:00</td><td>Pictures (3)</td><td>Morning city walk</td><td>#travel #city</td><td class="selected">Selected</td></tr>
+<tr><td>12:00</td><td>Pictures (5)</td><td>Market finds today</td><td>#market #finds</td><td class="prepared">Prepared</td></tr>
+<tr><td>18:00</td><td>Video (1)</td><td>Evening cooking clip</td><td>#cooking</td><td class="selected">Selected</td></tr>
+<tr><td>20:00</td><td>Video (1)</td><td>Night routine</td><td>#routine</td><td class="skipped">Skipped</td></tr>
+</table>
+<p>In this sample, only the two <strong>Selected</strong> items would go out at their times. The Prepared item stays in the queue, and the Skipped item does not go out.</p>
+</div>
+
+<div class="card">
+<h3>What the dry-run log looks like</h3>
+<p>In dry-run mode, before TikTok approval, the scheduler only logs what it <em>would</em> do:</p>
+<p><code>DRY-RUN: would post pictures at 10:00</code><br>
+<code>DRY-RUN: would post video at 18:00</code><br>
+<code>Nothing was sent to TikTok — approval pending.</code></p>
+</div>
+
+<div class="card">
+<h3>Daily limits, at a glance</h3>
+<ul>
+<li>Video posts: up to 5 per day, each at a separate time.</li>
+<li>Picture posts: up to 5 per day, each at a separate time, 1 to 35 pictures per post.</li>
+<li>A 6th post of the same type on the same day is not accepted, and two posts cannot share the same time.</li>
+</ul>
+</div>
+
+<p><a href="how-it-works.html">How the queue works</a> · <a href="features.html">All features</a></p>
+
+<footer>
+<p><strong>PostPilot Scheduler</strong> — a public scheduling tool for creators.</p>
+<p><a href="index.html">Home</a> · <a href="features.html">Features</a> · <a href="how-it-works.html">How it works</a> · <a href="dashboard.html">Dashboard preview</a> · <a href="faq.html">FAQ</a> · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></p>
+<p><small>PostPilot Scheduler is an independent scheduling tool. It is not affiliated with, endorsed by, or using the logo of any social-media company.</small></p>
+</footer>
+</body>
+</html>
