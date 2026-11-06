@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works — PostPilot Scheduler</title>
+<meta name="description" content="How PostPilot Scheduler works: add a post, queue it, mark it Selected, and the queue posts it at its time through TikTok's Content Posting API.">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<style>body{font-family:system-ui,sans-serif;max-width:820px;margin:0 auto;padding:0 16px 40px;line-height:1.55;color:#1c2430}header{display:flex;align-items:center;gap:12px;padding:20px 0 8px}header img{width:56px;height:56px;border-radius:12px}header h1{font-size:28px;margin:0}nav{border-top:1px solid #d5dce5;border-bottom:1px solid #d5dce5;padding:10px 0;margin:8px 0 20px}nav a{margin-right:14px;color:#0b5cab;text-decoration:none}nav a:hover{text-decoration:underline}a{color:#0b5cab}.card{border:1px solid #d5dce5;border-radius:10px;padding:16px;margin:14px 0}footer{border-top:1px solid #d5dce5;margin-top:32px;padding-top:16px;font-size:14px}</style>
+</head>
+<body>
+<header><img src="icon.png" alt="PostPilot Scheduler app icon"><div><h1>PostPilot Scheduler</h1><p style="margin:0;color:#556">How it works</p></div></header>
+<nav><a href="index.html">Home</a><a href="features.html">Features</a><a href="how-it-works.html">How it works</a><a href="dashboard.html">Dashboard preview</a><a href="faq.html">FAQ</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
+
+<h2>How PostPilot Scheduler works</h2>
+<p>This website is the public home of PostPilot Scheduler. The scheduling dashboard itself runs in the full PostPilot Scheduler app. This page explains the full flow, step by step.</p>
+
+<div class="card">
+<h3>Step 1 — Add a post</h3>
+<p>Choose a post type: a picture post (1 to 35 pictures) or a video post (1 video file). Add a caption, hashtags, and a time. The post is saved in your queue as <strong>Prepared</strong>.</p>
+<p>Example picture post: 3 pictures, caption "Morning city walk", hashtags #travel #city, time 10:00.<br>
+Example video post: 1 video, caption "Evening cooking clip", hashtags #cooking, time 18:00.</p>
+</div>
+
+<div class="card">
+<h3>Step 2 — Decide what goes out</h3>
+<p>Before its time, change each item's status:</p>
+<ul>
+<li><strong>Selected for upload</strong> — this post will go out at its time.</li>
+<li><strong>Prepared</strong> — saved, but will not go out yet.</li>
+<li><strong>Skipped</strong> — held back, will not go out.</li>
+</ul>
+<p>Only Selected items are posted. You can change your mind any time before the scheduled time.</p>
+</div>
+
+<div class="card">
+<h3>Step 3 — Connect TikTok (after approval only)</h3>
+<p>Posting to TikTok requires TikTok's approval of this app. After approval, you connect your TikTok account through TikTok's own OAuth login. Your TikTok password is never typed into, stored by, or sent through PostPilot Scheduler.</p>
+<p>Until approval, the app runs in dry-run mode: it only logs what it <em>would</em> post, and sends nothing to TikTok.</p>
+</div>
+
+<div class="card">
+<h3>Step 4 — The queue posts at the time</h3>
+<p>At the scheduled time, PostPilot Scheduler's own queue triggers the post through TikTok's Content Posting API with Direct Post enabled, using the video.upload and video.publish scopes. The API itself has no scheduled-publish time, so the app's own timer does that job.</p>
+<p>Video is the API's primary flow. The picture / carousel flow will be tested first after approval, before relying on it for daily posting.</p>
+</div>
+
+<div class="card">
+<h3>What you need</h3>
+<ul>
+<li>A TikTok account, connected after approval through TikTok's own login.</li>
+<li>Pictures or a video you have the right to post, with a caption, hashtags and a time.</li>
+<li>No app to install for this website: it is a web app, opened in a browser.</li>
+</ul>
+<p>This website has no login page. You do not need a test account to read it, and the Terms of Service and Privacy Policy are linked from every page.</p>
+</div>
+
+<p><a href="dashboard.html">See a sample queue</a> · <a href="faq.html">Questions? Read the FAQ</a></p>
+
+<footer>
+<p><strong>PostPilot Scheduler</strong> — a public scheduling tool for creators.</p>
+<p><a href="index.html">Home</a> · <a href="features.html">Features</a> · <a href="how-it-works.html">How it works</a> · <a href="dashboard.html">Dashboard preview</a> · <a href="faq.html">FAQ</a> · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></p>
+<p><small>PostPilot Scheduler is an independent scheduling tool. It is not affiliated with, endorsed by, or using the logo of any social-media company.</small></p>
+</footer>
+</body>
+</html>
