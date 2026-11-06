@@ -3,18 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy — PostPilot</title>
-<style>body{font-family:system-ui,sans-serif;max-width:760px;margin:32px auto;padding:0 16px;line-height:1.5;color:#1c2430}a{color:#0b5cab}nav a{margin-right:14px}</style>
+<title>Privacy Policy — PostPilot Scheduler</title>
+<meta name="description" content="Privacy Policy for PostPilot Scheduler: what scheduled posts and TikTok OAuth tokens are stored, and what is never stored.">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<style>body{font-family:system-ui,sans-serif;max-width:820px;margin:0 auto;padding:0 16px 40px;line-height:1.55;color:#1c2430}header{display:flex;align-items:center;gap:12px;padding:20px 0 8px}header img{width:56px;height:56px;border-radius:12px}header h1{font-size:28px;margin:0}nav{border-top:1px solid #d5dce5;border-bottom:1px solid #d5dce5;padding:10px 0;margin:8px 0 20px}nav a{margin-right:14px;color:#0b5cab;text-decoration:none}nav a:hover{text-decoration:underline}a{color:#0b5cab}footer{border-top:1px solid #d5dce5;margin-top:32px;padding-top:16px;font-size:14px}</style>
 </head>
 <body>
-<nav><a href="index.html">Home</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
-<h1>PostPilot</h1>
+<header><img src="icon.png" alt="PostPilot Scheduler app icon"><div><h1>PostPilot Scheduler</h1><p style="margin:0;color:#556">Privacy Policy</p></div></header>
+<nav><a href="index.html">Home</a><a href="features.html">Features</a><a href="how-it-works.html">How it works</a><a href="dashboard.html">Dashboard preview</a><a href="faq.html">FAQ</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></nav>
+
+<p><small>Last updated: November 2026.</small></p>
 <h2>Privacy Policy</h2>
-<p><strong>What PostPilot stores:</strong> the scheduled posts you create — post type (pictures or video), uploaded picture/video files for scheduling, captions, hashtags, and scheduled times — plus your choice for each post (Prepared, Selected for upload, or Skipped) and the queue status (queued, dry-run-logged, and so on).</p>
-<p><strong>TikTok login.</strong> When TikTok approval is in place, you may connect your TikTok account through TikTok's own OAuth login. PostPilot never asks for or stores your TikTok password. Any OAuth token issued by TikTok would be stored only to keep your connection working and to refresh it, and only after approval and your consent. In v1 (dry-run mode) no OAuth token is stored, because the login flow is not enabled.</p>
-<p><strong>What PostPilot does not do:</strong> it does not sell your data, does not read your TikTok password, and does not control your phone or any other app. Nothing is posted to TikTok in dry-run mode.</p>
-<p><strong>Deleting your data.</strong> You can delete a queued post from the dashboard. To fully remove your scheduled posts, delete all queued posts and, after any future TikTok connection, revoke PostPilot's access in your TikTok settings.</p>
+<p><strong>What PostPilot Scheduler stores:</strong> the scheduled posts you create — post type (pictures or video), uploaded picture/video files for scheduling, captions, hashtags, and scheduled times — plus your choice for each post (Prepared, Selected for upload, or Skipped) and the queue status (queued, dry-run-logged, and so on).</p>
+<p><strong>TikTok login.</strong> When TikTok approval is in place, you may connect your TikTok account through TikTok's own OAuth login. PostPilot Scheduler never asks for or stores your TikTok password. Any OAuth token issued by TikTok would be stored only to keep your connection working and to refresh it, and only after approval and your consent. In v1 (dry-run mode) no OAuth token is stored, because the login flow is not enabled.</p>
+<p><strong>Token refresh.</strong> From 1 December 2026, TikTok access tokens are valid for 2 hours and refresh tokens for 180 days, and every successful refresh returns a new refresh token and immediately invalidates the previous one. PostPilot Scheduler will always save the latest refresh token, never reuse a previous refresh token, and, when a refresh token expires, ask you to reconnect through TikTok's own login.</p>
+<p><strong>What PostPilot Scheduler does not do:</strong> it does not sell your data, does not read your TikTok password, and does not control your phone or any other app. Nothing is posted to TikTok in dry-run mode.</p>
+<p><strong>Deleting your data.</strong> You can delete a queued post from the dashboard. To fully remove your scheduled posts, delete all queued posts and, after any future TikTok connection, revoke PostPilot Scheduler's access in your TikTok settings.</p>
 <p><strong>Hosting.</strong> In the free model this public website is hosted as a static site (GitHub Pages), and the scheduling check runs as a timed job (GitHub Actions). The host's own privacy terms apply to server logs in addition to this policy. No TikTok password, client key, or client secret is stored on this static site.</p>
-<p><small>PostPilot is an independent scheduling tool. It is not affiliated with, endorsed by, or using the logo of any social-media company.</small></p>
+
+<footer>
+<p><strong>PostPilot Scheduler</strong> — a public scheduling tool for creators.</p>
+<p><a href="index.html">Home</a> · <a href="features.html">Features</a> · <a href="how-it-works.html">How it works</a> · <a href="dashboard.html">Dashboard preview</a> · <a href="faq.html">FAQ</a> · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></p>
+<p><small>PostPilot Scheduler is an independent scheduling tool. It is not affiliated with, endorsed by, or using the logo of any social-media company.</small></p>
+</footer>
 </body>
 </html>
