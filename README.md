@@ -1,15 +1,30 @@
-# PostPilot v1
+---
+title: PostPilot Scheduler
+emoji: ✈️
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
+# PostPilot v2
 
 A small web app for creators to plan and schedule TikTok posts.
 It is an independent tool — not affiliated with, endorsed by, or
 using the logo of any social-media company.
 
-**Current status: DRAFT / SANDBOX / DRY-RUN.**
-The TikTok developer app (PostPilot, platform Web, Category
-Productivity, Login Kit + Content Posting API, Direct Post ON)
-is **not submitted and not approved**. Nothing in v1 posts,
-uploads, or logs in to TikTok. No approval and no timeline is
-promised here.
+**Current status: TikTok APPROVED and Live (17 Nov 2026, 9:30 AM)
+— live posting code built 18 Nov 2026 (v2).**
+The TikTok developer app is PostPilot Scheduler (platform Web,
+Category Productivity, Login Kit + Content Posting API, Direct
+Post ON). By default the app still runs in **dry-run** mode:
+nothing is posted until APPROVED=true, TikTok credentials are
+set in `.env`, AND the owner connects their TikTok account via
+OAuth. With all three in place, a due Selected post is
+published via the real Content Posting API
+(`tiktok_api.py`). No approval of any future change and no
+timeline is promised here.
 
 ## What it does
 
@@ -97,29 +112,76 @@ secret, and never share a client key/secret in chat or screenshots.
 | `PORT` | `8000` | Port to listen on. |
 | `SCHEDULER_INTERVAL_SECONDS` | `60` | How often the scheduler checks for due Selected posts (minimum 10). |
 
-## Dry-run vs approved mode
+## Dry-run vs live mode (v2)
 
-- **Dry-run (default, v1):** `APPROVED` is not `true`, or any
-  TikTok credential is missing. Due **Selected** posts are
-  logged only. Prepared/Skipped posts are not logged as posting
-  at all — they simply stay queued.
-- **Approved mode:** requires `APPROVED=true` AND all three
-  TikTok credentials set. Even then, v1's real API call is a
-  **stub** (`real_api_call_stub` in `app.py`) that only logs and
-  sends nothing to TikTok. Wiring the actual Content Posting API
-  call is a separate, reviewed step after approval. Never flip
-  `APPROVED=true` with placeholder credentials.
+- **Dry-run (default):** `APPROVED` is not `true`, or any
+  TikTok credential is missing, or no OAuth token is stored.
+  Due **Selected** posts are logged only. Prepared/Skipped
+  posts are not logged as posting at all — they simply stay
+  queued.
+- **Live mode (v2):** requires `APPROVED=true` AND all three
+  TikTok credentials set AND a valid token in
+  `data/tokens.json`. A due Selected post is then published
+  via `tiktok_api.publish_post`: `creator_info/query` first,
+  then video `video/init/` (FILE_UPLOAD) or photo
+  `content/init/` (PHOTO, PULL_FROM_URL only, verified-domain
+  URLs only), then status polling until `PUBLISH_COMPLETE`.
+  The access token is refreshed first if it is near expiry;
+  every refresh saves the new refresh token at once (2h / 180d
+  rules from 1 Dec 2026). Publish id, status, and privacy are
+  recorded on the queue item; failures are marked `failed`.
+  Never flip `APPROVED=true` with placeholder credentials.
 
-## TikTok OAuth routes (safe-fail)
+## TikTok OAuth routes (v2)
+
+The registered Redirect URI is the static GitHub Pages home
+(`https://zramla717star.github.io/postpilot/`) — it is NOT
+changed here, and v2 needs no hosted backend for login.
 
 - `GET /auth/tiktok` — if approval/credentials are missing, it
   shows a plain "login is not available yet" message. If both
-  are set, v1 still shows "not wired up" and attempts no login.
-- `GET /auth/callback` — never logs, stores, or echoes back any
-  code or token parameter, and completes no login in v1.
+  are set, it stores a one-time `state` (10 minutes, single-use)
+  and redirects the owner to TikTok's own login page.
+- `GET /auth/callback` — if TikTok ever redirects straight to
+  this backend (`?code=...&state=...`), the code is verified
+  and exchanged at once. Otherwise it shows the manual
+  code-paste form: after TikTok login, TikTok sends the owner
+  back to the Pages home with `?code=...&state=...` in the
+  address bar — copy both values from there and paste them
+  into this form.
+- `POST /auth/callback` — exchanges the pasted code for tokens
+  and saves them in `data/tokens.json` (atomic write, mode
+  0600, git-ignored). The code/token are never logged, shown
+  back, or stored anywhere else.
 
 **No TikTok password is ever asked for, stored, or sent by this
-app.** Login, when enabled, is TikTok OAuth (Login Kit) only.
+app.** Login is TikTok OAuth (Login Kit) only. The owner logs
+in on TikTok's own page themselves.
+
+## First picture test — step by step (v2)
+
+Prerequisites: `.env` filled in (see above), TikTok account
+connected via `/auth/tiktok` + code paste, and
+`docs/test-photo.jpg` pushed to GitHub Pages (blocked until a
+fresh repo-scope GitHub token is supplied — see
+`LIVE_POSTING_PLAN.md`).
+
+1. Run the app locally: `python3 app.py`, open
+   <http://127.0.0.1:8000/app>.
+2. Add a picture post: post type "Picture / carousel", paste
+   `https://zramla717star.github.io/postpilot/test-photo.jpg`
+   in "Public photo URLs", caption "PostPilot test photo",
+   schedule it a few minutes ahead.
+3. Mark it **Selected** (new posts start as Prepared and are
+   never posted).
+4. Wait for its time; the scheduler publishes it and records
+   the publish id/status/privacy on the dashboard.
+5. Open the TikTok app and check: is the test post **public**
+   or only visible to you (private / SELF_ONLY)? Tell Muse —
+   a private post means the content audit has not passed yet,
+   not that the code is broken.
+6. Only after the picture test passes, repeat with 1 video
+   test, then daily 5 video + 5 picture (Selected only).
 
 ## Free hosting plan — approved 28 Oct 2026 (zero investment, no card)
 
@@ -226,8 +288,11 @@ the owner's TikTok dashboard steps:
 
 | File | Purpose |
 |---|---|
-| `app.py` | Web app: Home, Terms, Privacy, dashboard, queue, scheduler thread, safe-fail OAuth routes. Stdlib only. |
-| `scheduler.py` | Pure queue rules: per-type daily quotas (5 + 5), separate times, selection filter, dry-run wording. No network, no TikTok calls. |
+| `app.py` | Web app: Home, Terms, Privacy, dashboard, queue, scheduler thread, live OAuth routes + manual code-paste callback. Stdlib only. |
+| `tiktok_api.py` | TikTok v2 client (v2): OAuth authorize/exchange/refresh with rotation, token store, creator_info, video + photo init, chunk upload, status polling, verified-domain photo validation. Stdlib only. |
+| `scheduler.py` | Pure queue rules: per-type daily quotas (5 + 5), separate times, selection filter, dry-run vs live wording. No network, no TikTok calls. |
+| `docs/test-photo.jpg` | Original test photo (1080x1350) for the first picture test. NOT yet pushed to Pages (GitHub token expired — see LIVE_POSTING_PLAN.md). |
+| `scripts/test_live_api.py` | Mock-server tests for v2 (17/17 pass): refresh rotation, photo domain validation, video/photo publish to PUBLISH_COMPLETE, state mismatch, Prepared/Skipped guard. No real TikTok network. |
 | `icon.png` | Original 1024x1024 app icon (generated by `make_icon.py`). No TikTok/social logo. |
 | `make_icon.py` | Regenerates `icon.png` with Pillow. |
 | `.env.example` | Placeholder env vars. Copy to `.env`; never commit a real one. |
@@ -241,8 +306,11 @@ the owner's TikTok dashboard steps:
 
 - **No phone-control / screen-tap / accessibility code.** That
   route was ruled out; PostPilot uses the official API only.
-- **No real TikTok post, upload, or login.** No approval and no
-  usable credentials exist yet; v1 is dry-run by design.
+- **No real TikTok post, upload, or login in this task's run.**
+  v2 code can post, but only after the owner supplies `.env`
+  credentials, connects via OAuth themselves, and marks a post
+  Selected. No real TikTok call was made while building v2
+  (mock tests only), and no credential exists in this repo.
 - **No GitHub push, no deployment, no TikTok submission.** Those
   need the owner's decisions below, and were not authorised in
   this build.
