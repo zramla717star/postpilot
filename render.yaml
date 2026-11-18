@@ -1,0 +1,20 @@
+# PostPilot — Render free Web Service (no cost).
+# Deploy: Render dashboard > New > Web Service > connect zramla717star/postpilot.
+# Python stdlib only, so there are no dependencies to install.
+services:
+  - type: web
+    name: postpilot
+    env: python
+    buildCommand: "true"
+    startCommand: python3 app.py
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: SCHEDULER_INTERVAL_SECONDS
+        value: "60"
+      - key: APPROVED
+        value: "true"
+      - key: TIKTOK_REDIRECT_URI
+        value: https://zramla717star.github.io/postpilot/
+      # Set these three in the Render dashboard (never in this file):
+      # TIKTOK_CLIENT_KEY, TIKTOK_CLIENT_SECRET, APP_BASE_URL (the Render URL)
